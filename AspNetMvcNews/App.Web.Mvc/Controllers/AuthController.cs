@@ -4,6 +4,7 @@ namespace App.Web.Mvc.Controllers
 {
     public class AuthController : Controller
     {
+
         public IActionResult Register()
         {
             return View();
