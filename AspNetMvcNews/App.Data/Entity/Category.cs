@@ -5,16 +5,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
-    public class Category: BaseClass
+    public class Category: BaseEntity
     {
+        [MaxLength(100)]
         [Required]
-        [Column(name:"Ad", Order =1, TypeName = "nvarchar(100)")]
+        [Column(name:"Ad", TypeName = "nvarchar")]
         public string Name { get; set; }
-        [Column(name: "Açıklama", Order = 2, TypeName = "nvarchar(200)")]
+
+        [MaxLength(200)]
+        [Column(name: "Açıklama", TypeName = "nvarchar")]
         public string? Description { get; set; }
-        public List<CategoryNews>? News { get; set; }
+        //public ICollection<CategoryNews>? News { get; set; }
     }
 }

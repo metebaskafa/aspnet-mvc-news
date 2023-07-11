@@ -5,24 +5,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
-    public class Page:BaseClass, IAuiditEntity
+    public class Page : BaseAuditEntity
     {
         [Required]
-        [Column(name: "Başlık", Order = 1, TypeName = "nvarchar(200)")]
+        [MaxLength(200)]
+        [Column(name: "Başlık", TypeName = "nvarchar")]
         public string Title { get; set; }
-        [Column(name: "İçerik", Order = 2, TypeName = "text")]
-        public string Content { get; set; }
-        [Column(name: "Aktif?", Order = 3, TypeName = "bool")]
-        public bool IsActive { get; set; }
+
         [Required]
-        [Column(name: "Oluşturulma Tarihi", Order = 4, TypeName = "datetime")]
-        public DateTime CreatedAt { get; set; }
-        [Column(name: "Güncelleme Tarihi", Order = 5, TypeName = "datetime")]
-        public DateTime? UpdatedAt { get; set; }
-        [Column(name: "Silinme Tarihi", Order = 6, TypeName = "datetime")]
-        public DateTime? DeletedAt { get; set; }
+        [Column(name: "İçerik", TypeName = "text")]
+        public string Content { get; set; }
+
+
+        [Column(name: "Aktif?", TypeName = "bit")]
+        public bool IsActive { get; set; }
     }
 }
