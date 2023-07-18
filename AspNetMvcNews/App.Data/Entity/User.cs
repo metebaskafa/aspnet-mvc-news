@@ -1,36 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
-    public class User: BaseClass, IAuiditEntity
+    public class User: BaseAuditEntity
     {
         [Required]
-        [Column(name: "Email", Order = 1, TypeName = "varchar(200)")]
+        [Column(TypeName = "nvarchar")]
+        [DataType(DataType.EmailAddress)]
+        [MaxLength(200)]
         public string Email { get; set; }
+
+        [DataType(DataType.Password)]
+        [MaxLength(100)]
         [Required]
-        [Column(name: "Şifre", Order = 2, TypeName = "nvarchar(100)")]
+        [Column(name: "Şifre", TypeName = "nvarchar")]
         public string Password { get; set; }
+
+        [MaxLength(100)]
         [Required]
-        [Column(name: "Ad", Order = 3, TypeName = "nvarchar(100)")]
+        [Column(name: "Ad", TypeName = "nvarchar")]
         public string Name { get; set; }
-        [Column(name: "Şehir", Order = 4, TypeName = "nvarchar(100)")]
+
+        [MaxLength(100)]
+        [Column(name: "Şehir", TypeName = "nvarchar")]
         public string? City { get; set; }
+
         [Required]
-        [Column(name: "Oluşturulma Tarihi", Order = 5, TypeName = "datetime")]
-        public DateTime CreatedAt { get; set; }
-        [Column(name: "Güncelleme Tarihi", Order = 6, TypeName = "datetime")]
-        public DateTime? UpdatedAt { get; set; }
-        [Column(name: "Silinme Tarihi", Order = 7, TypeName = "datetime")]
-        public DateTime? DeletedAt { get; set; }
-        public List<NewsComment>? NewsComments { get; set; }
-        public List<Setting>? Settings { get; set; }
+        public int RoleId { get; set; }
 
+        // Relations
+        //public List<NewsComment>? NewsComments { get; set; }
+        //public List<Setting>? Settings { get; set; }
 
+        [ForeignKey(nameof(RoleId))]
+        public virtual Role? Role { get; set; }
     }
 }
