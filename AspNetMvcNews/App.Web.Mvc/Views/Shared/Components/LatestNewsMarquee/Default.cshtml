@@ -1,0 +1,15 @@
+﻿@model IEnumerable<News>
+<div class="latest-news-marquee-area">
+    <div class="simple-marquee-container">
+        <div class="marquee">
+            <ul class="marquee-content-items">
+                @foreach (var item in Model)
+                {
+                    <li>
+                        <a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id"><span class="latest-news-time">@item.CreatedAt.ToString("hh:mm")</span>@item.Title</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

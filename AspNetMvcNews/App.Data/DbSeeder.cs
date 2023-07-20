@@ -86,7 +86,7 @@ namespace App.Data
             }
             dbContext.SaveChanges();
             //Finish : add news
-            
+
             // Start : add pages
             List<Page> list3 = SeedPage(20);
             foreach (var pages in list3)
@@ -120,10 +120,10 @@ namespace App.Data
             List<Category> list = new();
             while (true)
             {
-                
+
                 var category1 = new Faker<Category>()
                 .RuleFor(c => c.Name, f => f.Random.Word())
-                .RuleFor(c => c.Description, f => f.Lorem.Text().ClampLength(50,200))
+                .RuleFor(c => c.Description, f => f.Lorem.Text().ClampLength(50, 200))
             ;
                 list.Add(category1);
                 i++;
@@ -137,14 +137,14 @@ namespace App.Data
             List<News> list = new();
             while (true)
             {
-                
+
                 News data = new Faker<News>()
                 .RuleFor(c => c.Title, f => f.Random.Words(4))
-                .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8).ClampLength(200,600))
-                .RuleFor(c => c.CreatedAt, f => f.Date.Between(new DateTime(2022, 1, 1),new DateTime(2023, 7, 11)))
-                .RuleFor(c => c.UserId, f=> f.Random.Int(1,2))
+                .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8).ClampLength(200, 600))
+                .RuleFor(c => c.CreatedAt, f => f.Date.Between(new DateTime(2022, 1, 1), new DateTime(2023, 7, 11)))
+                .RuleFor(c => c.UserId, f => f.Random.Int(1, 2))
             ;
-                
+
                 list.Add(data);
                 i++;
                 if (i == b)
@@ -157,10 +157,10 @@ namespace App.Data
             List<Page> list = new();
             while (true)
             {
-                
+
                 Page data = new Faker<Page>()
                 .RuleFor(c => c.Title, f => f.Random.Words(4))
-                .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8).ClampLength(200,600))
+                .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8).ClampLength(200, 600))
                 .RuleFor(c => c.CreatedAt, f => f.Date.Between(new DateTime(2022, 1, 1), new DateTime(2023, 7, 11)))
             ;
                 data.IsActive = true;
@@ -176,11 +176,11 @@ namespace App.Data
             List<CategoryNews> list = new();
             while (true)
             {
-                
+
                 CategoryNews data = new Faker<CategoryNews>()
-                .RuleFor(c => c.CategoryId, f => f.Random.Int(1,10))
-                .RuleFor(c => c.NewsId, f => f.Random.Int(1,20))
-                
+                .RuleFor(c => c.CategoryId, f => f.Random.Int(1, 10))
+                .RuleFor(c => c.NewsId, f => f.Random.Int(1, 20))
+
             ;
                 list.Add(data);
                 i++;
@@ -198,8 +198,8 @@ namespace App.Data
                 NewsComment data = new Faker<NewsComment>()
                 .RuleFor(c => c.PostId, f => f.Random.Int(1, 20))
                 .RuleFor(c => c.UserId, f => f.Random.Int(1, 3))
-                .RuleFor(c=>c.Comment, f => f.Lorem.Paragraph(1))
-                .RuleFor(c=>c.CreatedAt, f => f.Date.Between(new DateTime(2023, 7, 9), new DateTime(2023, 7, 12)))
+                .RuleFor(c => c.Comment, f => f.Lorem.Paragraph(1))
+                .RuleFor(c => c.CreatedAt, f => f.Date.Between(new DateTime(2023, 7, 9), new DateTime(2023, 7, 12)))
             ;
                 data.IsActive = true;
                 list.Add(data);

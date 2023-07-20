@@ -1,11 +1,15 @@
 ﻿@{
     ViewData["Title"] = "Anasayfa";
 }
-<partial name="_Slider" />
+@*<partial name="_Slider" />*@
+@await Component.InvokeAsync("Slider")
+
+
 
 
 <!-- Latest News Marquee Area Start -->
-<partial name="_LatestNewsMarquee" />
+@*<partial name="_LatestNewsMarquee" />*@
+@await Component.InvokeAsync("LatestNewsMarquee")
 <!-- Latest News Marquee Area End -->
 <!-- Main Content Area Start -->
 <section class="main-content-wrapper section_padding_100">
@@ -39,11 +43,12 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="gazette-todays-post section_padding_100_50">
+                @await Component.InvokeAsync("TodaysMostPopular")
+                @*<div class="gazette-todays-post section_padding_100_50">
                     <div class="gazette-heading">
                         <h4>today’s most popular</h4>
                     </div>
+
                     <!-- Single Today Post -->
                     <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
                         <div class="todays-post-thumb">
@@ -76,7 +81,7 @@
                             <p>Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.</p>
                         </div>
                     </div>
-                </div>
+                </div>*@
             </div>
 
             <div class="col-12 col-lg-3 col-md-6">
@@ -178,4 +183,5 @@
 <partial name="_VideoPosts" />
 <!-- Video Posts Area End -->
 <!-- Editorial Area Start -->
-<partial name="_EditorialSlider" />
+@await Component.InvokeAsync("EditorialSlider")
+@*<partial name="_EditorialSlider" />*@

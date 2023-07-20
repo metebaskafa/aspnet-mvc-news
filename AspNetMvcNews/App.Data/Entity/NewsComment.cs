@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using App.Data.Entity.Abstract;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using App.Data.Entity.Abstract;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App.Data.Entity
 {
-    public class NewsComment: BaseAuditEntity
+    public class NewsComment : BaseAuditEntity
     {
         [Required]
         public int PostId { get; set; }
