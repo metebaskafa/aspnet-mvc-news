@@ -9,7 +9,4 @@ namespace App.Web.Mvc.Models
         public List<Category> Categories { get; set; }
     }
 
-
-
-
 }
