@@ -8,5 +8,4 @@ namespace App.Web.Mvc.Models
         public List<int> CommentCount { get; set; }
         public List<Category> Categories { get; set; }
     }
-
 }
