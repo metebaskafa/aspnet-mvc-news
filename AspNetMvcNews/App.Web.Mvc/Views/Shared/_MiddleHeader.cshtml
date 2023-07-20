@@ -13,6 +13,18 @@
                     <a href="#"><img src="/NewsTemplate/img/bg-img/top-advert.png" alt="header-add"></a>
                 </div>
             </div>
+            <div class="text-end">
+                @if (Context.Session.GetInt32("UserId") == null)
+                {
+                    <a asp-controller="Auth" asp-action="Login" class="btn btn-outline-primary">Giriş</a>
+                    <a asp-controller="Auth" asp-action="Register" class="btn btn-warning">Kayıt Ol</a>
+                }
+                else
+                {
+                    <a asp-controller="Auth" asp-action="Logout" class="btn btn-danger">Oturumu Kapat</a>
+                }
+            </div>
         </div>
     </div>
 </div>
+<a href=""></a>

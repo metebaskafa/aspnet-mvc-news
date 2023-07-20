@@ -3,7 +3,7 @@
     <div class="gazette-heading">
         <h4>today’s most popular</h4>
     </div>
-    @foreach (var item in Model)
+   @* @foreach (var item in Model)
     {
         <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
             <div class="todays-post-thumb">
@@ -20,9 +20,9 @@
                 <p>@item.Content.Substring(0,25)</p>
             </div>
         </div>
-    }
+    }*@
     <!-- Single Today Post -->
-    @*<div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+    <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
         <div class="todays-post-thumb">
             <img src="/NewsTemplate/img/blog-img/2.jpg" alt="">
         </div>
@@ -52,5 +52,5 @@
             <a href="#" class="post-total-comments">3 Comments</a>
             <p>Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.</p>
         </div>
-    </div>*@
+    </div>
 </div>
