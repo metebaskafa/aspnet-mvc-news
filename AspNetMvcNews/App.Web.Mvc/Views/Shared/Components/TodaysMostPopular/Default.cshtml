@@ -1,10 +1,14 @@
-﻿@model IEnumerable<News>
+﻿@model TodayNewsViewModel
 <div class="gazette-todays-post section_padding_100_50">
     <div class="gazette-heading">
         <h4>today’s most popular</h4>
     </div>
-   @* @foreach (var item in Model)
+    @{
+        var i = 0;
+    }
+    @foreach (var item in Model.News)
     {
+        
         <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
             <div class="todays-post-thumb">
                 <img src="/NewsTemplate/img/blog-img/2.jpg" alt="">
@@ -12,17 +16,18 @@
             <div class="todays-post-content">
                 <!-- Post Tag -->
                 <div class="gazette-post-tag">
-                    <a href="#">News</a>
+                    <a asp-controller="Category" asp-action="Index" asp-route-Id="@Model.Categories[i].Id" >@Model.Categories[i].Name</a>
                 </div>
                 <h3><a href="#" class="font-pt mb-2">@item.Title</a></h3>
                 <span class="gazette-post-date mb-2">@item.CreatedAt.ToString("MMMM dd, yyyy")</span>
-                <a href="#" class="post-total-comments">3 Comments</a>
+                <a href="#" class="post-total-comments">@Model.CommentCount[i] Comments</a>
                 <p>@item.Content.Substring(0,25)</p>
             </div>
         </div>
-    }*@
+        i++;
+    }
     <!-- Single Today Post -->
-    <div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
+    @*<div class="gazette-single-todays-post d-md-flex align-items-start mb-50">
         <div class="todays-post-thumb">
             <img src="/NewsTemplate/img/blog-img/2.jpg" alt="">
         </div>
@@ -52,5 +57,5 @@
             <a href="#" class="post-total-comments">3 Comments</a>
             <p>Aliquam quis convallis enim. Nunc pulvinar molestie sem id blandit. Nunc venenatis interdum mollis. Aliquam finibus nulla quam, a iaculis justo finibus non. Suspendisse in fermentum nunc.</p>
         </div>
-    </div>
+    </div>*@
 </div>
