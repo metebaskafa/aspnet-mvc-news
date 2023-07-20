@@ -20,9 +20,11 @@
 </head>
 <body>
     <header class="header-area">
-        <partial name="_TopHeader" />
+        @await Component.InvokeAsync("TopHeader")
+       @* <partial name="_TopHeader" />*@
         <partial name="_MiddleHeader" />
-        <partial name="_BottomHeader" />
+        @await Component.InvokeAsync("NavBar")
+        @*<partial name="_BottomHeader" />*@
     </header>
     <div>
         <main role="main" class="pb-3">

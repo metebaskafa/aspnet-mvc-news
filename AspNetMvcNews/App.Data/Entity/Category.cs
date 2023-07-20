@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using App.Data.Entity.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
-    public class Category: BaseEntity
+    public class Category : BaseEntity
     {
         [MaxLength(100)]
         [Required]
-        [Column(name:"Ad", TypeName = "nvarchar")]
+        [Column(name: "Ad", TypeName = "nvarchar")]
         public string Name { get; set; }
 
         [MaxLength(200)]

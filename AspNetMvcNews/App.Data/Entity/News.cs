@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using App.Data.Entity.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
@@ -24,7 +19,7 @@ namespace App.Data.Entity
         [Column(name: "İçerik", TypeName = "ntext")]
         public string Content { get; set; }
 
-        
+
 
         // Relations
         //public List<NewsImage>? Images { get; set; }

@@ -1,10 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using App.Data.Entity.Abstract;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
-    public class User: BaseAuditEntity
+    public class User : BaseAuditEntity
     {
         [Required]
         [Column(TypeName = "nvarchar")]

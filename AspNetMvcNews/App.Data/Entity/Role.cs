@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using App.Data.Entity.Abstract;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
@@ -9,7 +9,7 @@ namespace App.Data.Entity
         [Required]
         [MinLength(1)]
         [MaxLength(100)]
-        [Column(name:"Rol",TypeName = "nvarchar")]
+        [Column(name: "Rol", TypeName = "nvarchar")]
         public string? Name { get; set; }
     }
 }

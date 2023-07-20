@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using App.Data.Entity.Abstract;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using App.Data.Entity.Abstract;
 
 namespace App.Data.Entity
 {
     public class Setting : BaseAuditEntity
     {
-        
+
         public int UserId { get; set; }
 
         [ForeignKey(nameof(UserId))]
