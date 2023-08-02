@@ -1,4 +1,13 @@
-﻿<div class="middle-header">
+﻿@using System.Text.Encodings.Web;
+@{
+    var currentUrl = UrlEncoder.Default.Encode(Context.Request.Path);
+
+}
+
+
+
+
+<div class="middle-header">
     <div class="container h-100">
         <div class="row h-100 align-items-center">
             <!-- Logo Area -->
@@ -16,7 +25,7 @@
             <div class="text-end">
                 @if (Context.Session.GetInt32("UserId") == null)
                 {
-                    <a asp-controller="Auth" asp-action="Login" class="btn btn-outline-primary">Giriş</a>
+                    <a asp-controller="Auth" asp-action="Login" asp-route-redirectUrl="@currentUrl" class="btn btn-outline-primary">Giriş</a>
                     <a asp-controller="Auth" asp-action="Register" class="btn btn-warning">Kayıt Ol</a>
                 }
                 else

@@ -43,7 +43,24 @@ app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapControllerRoute(
+    name: "NewsRoute",
+    pattern: "News/{title}-{id}/{action=Detail}/",
+	new {controller= "News", action= "Detail", title=""},
+	new {id=@"^\d+$"}
+	);
+app.MapControllerRoute(
+    name: "CategoryRoute",
+    pattern: "Category/{title}-{id}/{action=Index}/",
+    new { controller = "Category", action = "Index", title = "" },
+    new {id=@"^\d+$"}
+    );
+app.MapControllerRoute(
+    name: "PageRoute",
+    pattern: "Page/{title}-{id}/{action=Detail}/",
+    new { controller = "Page", action = "Detail", title = "" },
+    new { id = @"^\d+$" }
+    );
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");

@@ -16,9 +16,11 @@ namespace App.Data.Entity
         [Column(name: "Başlık", TypeName = "nvarchar")]
         public string Title { get; set; }
 
-        [Column(name: "İçerik", TypeName = "ntext")]
+        [Column(name: "İçerik", TypeName = "nvarchar")]
         public string Content { get; set; }
 
+        [Column(name: "FlaşHaber?", TypeName = "bit")]
+        public bool IsBreaking { get; set; }
 
 
         // Relations

@@ -1,12 +1,15 @@
 ﻿using App.Data;
 using App.Data.Entity;
 using App.Web.Mvc.Models;
+using App.Web.Mvc.Utils;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Claims;
+using System.Text.Encodings.Web;
+using System.Web;
 
 namespace App.Web.Mvc.Controllers
 {
@@ -64,17 +67,23 @@ namespace App.Web.Mvc.Controllers
             }
             return View();
         }
-        public IActionResult Login(string returnUrl)
-        {
 
-            var model = new LoginViewModel() { redirectUrl = returnUrl };
+        [HttpGet]
+        public IActionResult Login([FromQuery]string redirectUrl)
+        {
+            string url = HttpUtility.UrlDecode(redirectUrl);
+            //Url decode yapılcak
+            var model = new LoginViewModel() { redirectUrl = url };
             return View(model);
         }
+
         [HttpPost]
         public async Task<IActionResult> LoginAsync(LoginViewModel user)
         {
             try
             {
+                string url = HttpUtility.UrlDecode(user.redirectUrl);
+                user.redirectUrl = url;
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Boş geçilemez!");
@@ -103,6 +112,7 @@ namespace App.Web.Mvc.Controllers
                         ClaimsPrincipal claimsPrincipal = new(kullanicikimligi);
                         await HttpContext.SignInAsync(claimsPrincipal);
                         HttpContext.Session.SetInt32("UserId", kullanici.Id);
+                        
 
                         return Redirect(string.IsNullOrEmpty(user.redirectUrl) ? "/Home/Index" : user.redirectUrl);
                     }
@@ -120,7 +130,7 @@ namespace App.Web.Mvc.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult ForgotPassword(ForgotPasswordViewModel forgotPassword)
+        public async Task<IActionResult> ForgotPassword(ForgotPasswordViewModel forgotPassword)
         {
 
             if (!ModelState.IsValid)
@@ -136,19 +146,10 @@ namespace App.Web.Mvc.Controllers
             }
             else
             {
-                SmtpClient smtpClient = new("burak.alanyali@yahoo.com", 25);
-                smtpClient.Credentials = new NetworkCredential("burak.alanyali@yahoo.com", "Alanya6861");
-                MailMessage message = new();
-                message.From = new MailAddress("burak.alanyali@yahoo.com");
-                message.To.Add(kullanici.Email);
-                message.Subject = "Şifre Sıfırlama Talebi";
-                message.Body = $"Kullanıcı Bilgileri : <hr /> " +
-                    $"Ad : {kullanici.Name} <hr /> " +
-                    $"Email : {kullanici.Email} <hr /> " +
-                    $"Bilgilerine sahip kullanıcı şifre sıfırlama talebiniz alınmıştır.  <hr />" +
-                    $"Devam etmek için <a href='https://localhost:7276/Auth/UpdatePassword?newPassword={kullanici.Email}' >Buraya</a> tıklayınız.";
-                message.IsBodyHtml = true;
-                //smtpClient.Send(message);
+                //await EmailSend.SendMailAsync(kullanici);
+
+
+
                 return RedirectToAction(nameof(UpdatePassword), kullanici);
 
             }

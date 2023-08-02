@@ -12,6 +12,7 @@
 
                     <form asp-action="Login" method="Post">
                         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input type="hidden" asp-for="redirectUrl" />
                         <div class="form-floating mb-3">
                             
                             <input asp-for="Email" class="form-control" type="email" placeholder="name@example.com" />
