@@ -97,7 +97,7 @@ namespace App.Data
             //Finish : add pages
 
             // Start : add CategoryNews
-            List<CategoryNews> list4 = SeedCategoryNews(300);
+            List<CategoryNews> list4 = SeedCategoryNews(20);
             foreach (var news in list4)
             {
                 dbContext.CategoryNews.Add(news);
@@ -143,6 +143,7 @@ namespace App.Data
                 .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8).ClampLength(200, 600))
                 .RuleFor(c => c.CreatedAt, f => f.Date.Between(new DateTime(2022, 1, 1), new DateTime(2023, 7, 11)))
                 .RuleFor(c => c.UserId, f => f.Random.Int(1, 2))
+                .RuleFor(c => c.IsBreaking, f => f.Random.Bool())
             ;
 
                 list.Add(data);
@@ -176,13 +177,14 @@ namespace App.Data
             List<CategoryNews> list = new();
             while (true)
             {
-
-                CategoryNews data = new Faker<CategoryNews>()
+                for (int t = 0; t < 3; t++)
+                {
+                    CategoryNews data = new Faker<CategoryNews>()
                 .RuleFor(c => c.CategoryId, f => f.Random.Int(1, 10))
-                .RuleFor(c => c.NewsId, f => f.Random.Int(1, 20))
-
-            ;
+                .RuleFor(c => c.NewsId, f => f.Random.Int(i+1,i+1));
                 list.Add(data);
+                };
+                
                 i++;
                 if (i == b)
                     return list;
