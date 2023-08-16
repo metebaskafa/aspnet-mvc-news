@@ -12,7 +12,7 @@ namespace App.Web.Mvc.ViewComponents
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(_context.News.OrderByDescending(x => x.CreatedAt).Take(6).ToList());
+            return View(_context.News.Where(x=>x.IsBreaking).OrderByDescending(x => x.CreatedAt).Take(6).ToList());
         }
     }
 }

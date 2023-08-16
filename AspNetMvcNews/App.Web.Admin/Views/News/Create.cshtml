@@ -1,0 +1,76 @@
+﻿@model NewsCRUDModel
+@{
+	ViewData["Title"] = "Yeni Haber Ekle";
+}
+<head>
+	<link href="~/multiselect-master/styles/multiselect.css" rel="stylesheet" />
+	<script src="~/multiselect-master/multiselect.min.js"></script>
+</head>
+<h4>Haber</h4>
+<hr />
+<div class="row">
+	<div class="col-md-4">
+		<form asp-action="Create" method="post">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<div class="form-group">
+				<label asp-for="Title" class="control-label"></label>
+				<input asp-for="Title" class="form-control" />
+				<span asp-validation-for="Title" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<label asp-for="Content" class="control-label"></label>
+				<input asp-for="Content" class="form-control" />
+				<span asp-validation-for="Content" class="text-danger"></span>
+			</div>
+			<div class="form-group form-check">
+				<label class="form-check-label">
+					<input class="form-check-input" asp-for="IsBreaking"  /> @Html.DisplayNameFor(model=>model.IsBreaking)
+				</label>
+			</div>
+			<div class="form-group">
+				<label asp-for="Categories" class="control-label"></label>
+				@*<div class="col-sm-6">
+					@Html.ListBoxFor(model=>model.CategoryIds, new MultiSelectList(Model.Categories,"Value","Text"), new{@class = "form-control", multiple="multiple", id= "Category_dropdown"})
+				</div>*@
+				<select asp-for="CategoryIds" id="Category_dropdown" multiple class="col-sm-6">
+					@foreach (var item in Model.Categories)
+					{
+						<option value="@item.Id">@item.Name</option>
+					}
+				</select>
+				<span asp-validation-for="Categories" class="text-danger"></span>
+			</div>
+			<div class="form-group">
+				<input type="submit" value="Yeni Ekle" class="btn btn-primary" />
+			</div>
+		</form>
+	</div>
+</div>
+
+<div>
+	<a asp-action="Index">Listeye Dön</a>
+</div>
+<script>
+	document.multiselect('#Category_dropdown')
+		.setCheckBoxClick("checkboxAll", function (target, args) {
+			console.log("Checkbox 'Select All' was clicked and got value ", args.checked);
+		})
+		.setCheckBoxClick("1", function (target, args) {
+			console.log("Checkbox for item with value '1' was clicked and got value ", args.checked);
+		});
+	function enable() {
+		document.multiselect('#testSelect1').setIsEnabled(true);
+	}
+
+	function disable() {
+		document.multiselect('#testSelect1').setIsEnabled(false);
+	}
+</script>
+
+@*@section Scripts{
+	<script>
+		$(document).ready(function(){
+			$('#Category_dropdown').multiselect();
+		});
+	</script>
+}*@

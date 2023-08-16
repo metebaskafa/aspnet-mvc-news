@@ -57,12 +57,13 @@ namespace App.Web.Mvc.ViewComponents
 
             // Ardından, bu postId'leri kullanarak haberleri göstermek için uygun şekilde işlem yapabilirsiniz.
             // Örnek olarak:
-           Console.WriteLine("En çok yorum alan ilk iki haberin postId'leri:");
+           List<NewsImage> images = new List<NewsImage>();
             List<News> todayNews = new List<News>();
 
             foreach (int postId in topTwoPostIds)
             {
                 todayNews.Add(_context.News.Where(x => x.Id == postId).FirstOrDefault());
+                images.Add(_context.Images.Where(x => x.NewsId== postId).FirstOrDefault());
                 topTwoCategoryIds.Add(_context.CategoryNews.Where(x => x.NewsId == postId).FirstOrDefault().CategoryId);
             }
             List<int> ints = new List<int>();
@@ -76,7 +77,7 @@ namespace App.Web.Mvc.ViewComponents
                 categories.Add(_context.Categories.Where(x => x.Id == item).FirstOrDefault());
             }
 
-            TodayNewsViewModel model = new() { News = todayNews, CommentCount = ints, Categories = categories };
+            TodayNewsViewModel model = new() { News = todayNews, CommentCount = ints, Categories = categories, Images=images };
 
             return View(model);
 

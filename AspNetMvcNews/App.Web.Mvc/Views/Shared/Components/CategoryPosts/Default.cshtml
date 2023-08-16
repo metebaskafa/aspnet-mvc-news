@@ -1,0 +1,113 @@
+﻿@model CategoryPostView
+
+<div class="gazette-catagory-posts-area">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-4">
+				<!-- Single Catagory Post -->
+				@foreach (var item in Model.NewsLeft)
+				{
+					if (item == Model.NewsLeft[0])
+					{
+						<div class="gazette-single-catagory-post">
+
+							<!-- Post Tag -->
+							@if (Model.ImageLeft is not null)
+							{
+								<div class="single-catagory-post-thumb mb-15">
+									<img src="@Model.ImageLeft.ImagePath" alt="">
+								</div>
+							}
+							else
+							{
+								<div class="single-catagory-post-thumb mb-15">
+									<img src="/NewsTemplate/img/blog-img/12.jpg" alt="">
+								</div>
+							}
+							<div class="gazette-post-tag">
+								<a asp-controller="Category" asp-action="Index" asp-route-id="@Model.CategoryLeft.Id">@Model.CategoryLeft.Name</a>
+							</div>
+							<h5><a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id" class="font-pt">@item.Title</a></h5>
+							<span>@item.CreatedAt.ToString("MMM dd, yyyy")</span>
+						</div>
+					}
+					else
+					{
+						<div class="gazette-single-catagory-post">
+							<h5><a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id" class="font-pt">@item.Title</a></h5>
+							<span>@item.CreatedAt.ToString("MMM dd, yyyy")</span>
+						</div>
+					}
+				}
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="row">
+					@foreach (var item in Model.MiddleNews)
+					{
+						<div class="col-12 col-md-6">
+
+							<!-- Single Catagory Post -->
+							<div class="gazette-single-catagory-post">
+								@if (item.NewsImage is not null)
+								{
+									<div class="single-catagory-post-thumb mb-15">
+										<img src="@item.NewsImage.ImagePath" alt="">
+									</div>
+								}
+								else
+								{
+									<div class="single-catagory-post-thumb mb-15">
+										<img src="/NewsTemplate/img/blog-img/14.jpg" alt="">
+									</div>
+								}
+
+								<!-- Post Tag -->
+								<div class="gazette-post-tag">
+									<a asp-controller="Category" asp-action="Index" asp-route-id="@item.Category.Id">@item.Category.Name</a>
+								</div>
+								<h5><a asp-controller="News" asp-action="Detail" asp-route-id="@item.News.Id" class="font-pt">@item.News.Title</a></h5>
+								<span>@item.News.CreatedAt.ToString("MMM dd, yyyy")</span>
+							</div>
+						</div>
+					}
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				@foreach (var item in Model.NewsRight)
+				{
+					if (item == Model.NewsRight[0])
+					{
+						<div class="gazette-single-catagory-post">
+
+							<!-- Post Tag -->
+							@if (Model.ImageRight is not null)
+							{
+								<div class="single-catagory-post-thumb mb-15">
+									<img src="@Model.ImageRight.ImagePath" alt="">
+								</div>
+							}
+							else
+							{
+								<div class="single-catagory-post-thumb mb-15">
+									<img src="/NewsTemplate/img/blog-img/13.jpg" alt="">
+								</div>
+							}
+							<div class="gazette-post-tag">
+								<a asp-controller="Category" asp-action="Index" asp-route-id="@Model.CategoryRight.Id">@Model.CategoryRight.Name</a>
+							</div>
+							<h5><a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id" class="font-pt">@item.Title</a></h5>
+							<span>@item.CreatedAt.ToString("MMM dd, yyyy")</span>
+						</div>
+					}
+					else
+					{
+						<div class="gazette-single-catagory-post">
+							<h5><a asp-controller="News" asp-action="Detail" asp-route-id="@item.Id" class="font-pt">@item.Title</a></h5>
+							<span>@item.CreatedAt.ToString("MMM dd, yyyy")</span>
+						</div>
+					}
+				}
+			</div>
+		</div>
+	</div>
+</div>

@@ -47,6 +47,19 @@
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>*@
+    @if (ViewBag.Message != null)
+    {
+        <script>
+
+            $(document).ready(function () {
+
+                alert('@ViewBag.Message');
+
+            });
+
+        </script>
+
+    }
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

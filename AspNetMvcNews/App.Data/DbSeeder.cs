@@ -140,7 +140,7 @@ namespace App.Data
 
                 News data = new Faker<News>()
                 .RuleFor(c => c.Title, f => f.Random.Words(4))
-                .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8).ClampLength(200, 600))
+                .RuleFor(c => c.Content, f => f.Lorem.Paragraphs(8,"\n\n").ClampLength(500, 1000))
                 .RuleFor(c => c.CreatedAt, f => f.Date.Between(new DateTime(2022, 1, 1), new DateTime(2023, 7, 11)))
                 .RuleFor(c => c.UserId, f => f.Random.Int(1, 2))
                 .RuleFor(c => c.IsBreaking, f => f.Random.Bool())

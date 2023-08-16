@@ -1,0 +1,70 @@
+﻿@model IEnumerable<News>
+@{
+	ViewData["Title"] = "Haberler";
+}
+
+<p>
+	<a asp-action="Create" class="btn btn-outline-primary">Yeni Haber Ekle</a>
+</p>
+<table class="table table-striped table-hover">
+	<thead>
+		<tr>
+			<th>
+				No
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.Title)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.CreatedAt)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.IsBreaking)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.UserId)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.UpdatedAt)
+			</th>
+			<th>
+				@Html.DisplayNameFor(model => model.DeletedAt)
+			</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.Id)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Title)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.CreatedAt)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.IsBreaking)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.UserId)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.UpdatedAt)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.DeletedAt)
+				</td>
+				<td>
+					<a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Düzenle</a> |
+					<a class="btn btn-info" asp-controller="NewsImage" asp-action="Details" asp-route-id="@item.Id">Images</a> |
+					<a class="btn btn-dark" asp-controller="NewsComment" asp-action="Details" asp-route-id="@item.Id">Comments</a> |
+					<a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Sil</a>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>

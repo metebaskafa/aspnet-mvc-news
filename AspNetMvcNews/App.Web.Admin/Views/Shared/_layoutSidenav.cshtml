@@ -1,0 +1,67 @@
+﻿
+<div id="layoutSidenav_nav">
+	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+		<div class="sb-sidenav-menu">
+			<div class="nav">
+				<div class="sb-sidenav-menu-heading">Core</div>
+				<a class="nav-link" asp-controller="Home" asp-action="Index">
+					<div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+					AnaSayfa
+				</a>
+				<div class="sb-sidenav-menu-heading">Yönetim</div>
+				<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+					<div class="sb-nav-link-icon"><i class="fas fa-list"></i></div>
+					Kategoriler
+					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+				</a>
+				<div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav">
+						<a class="nav-link" asp-controller="Category" asp-action="Index">Kategori Listesi</a>
+						<a class="nav-link" asp-controller="Category" asp-action="Create">Yeni Kategori Ekle</a>
+					</nav>
+				</div>
+				<a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+					<div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+					Sayfalar
+					<div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+				</a>
+				<div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+					<nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+						<a class="nav-link" asp-controller="Page" asp-action="Index">Sayfa Listesi</a>
+						<a class="nav-link" asp-controller="Category" asp-action="Index">Yeni Sayfa Ekle</a>
+					</nav>
+				</div>
+				<a class="nav-link" asp-controller="User" asp-action="Index">
+					<div class="sb-nav-link-icon">
+					<i class="fa-solid fa-user"></i>
+				</div>Kullanıcı Listesi</a>
+				<a class="nav-link" asp-controller="Setting" asp-action="Index">
+					<div class="sb-nav-link-icon">
+					<i class="fa-solid fa-gear"></i>
+				</div>Ayarlar Listesi</a>
+				<div class="sb-sidenav-menu-heading">Haberler</div>
+				<a class="nav-link" asp-controller="News" asp-action="Index">
+					<div class="sb-nav-link-icon"><i class="fa-regular fa-newspaper"></i></div>
+					Haberler Listesi
+				</a>
+				<a class="nav-link" asp-controller="NewsImage" asp-action="Index">
+					<div class="sb-nav-link-icon"><i class="fa-regular fa-image"></i></div>
+					Haber Resimleri Listesi
+				</a>
+				<a class="nav-link" asp-controller="NewsComment" asp-action="Index">
+					<div class="sb-nav-link-icon"><i class="fa-regular fa-comment"></i></div>
+					Haber Yorumları Listesi
+				</a>
+				<a class="nav-link" asp-controller="VideoNews" asp-action="Index">
+					<div class="sb-nav-link-icon"><i class="fa-solid fa-film"></i></div>
+					Video Haberler Listesi
+				</a>
+			</div>
+		</div>
+		<div class="sb-sidenav-footer">
+			<div class="small">Logged in as:</div>
+			Start Bootstrap
+		</div>
+	</nav>
+</div>
+
