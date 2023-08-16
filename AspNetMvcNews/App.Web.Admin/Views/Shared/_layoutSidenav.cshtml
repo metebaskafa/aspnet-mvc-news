@@ -1,4 +1,9 @@
-﻿
+﻿@using System.Security.Claims;
+@{
+	
+	var userMail = User.Claims.First(x => x.Type == ClaimTypes.Email).Value;
+
+}
 <div id="layoutSidenav_nav">
 	<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
 		<div class="sb-sidenav-menu">
@@ -60,7 +65,7 @@
 		</div>
 		<div class="sb-sidenav-footer">
 			<div class="small">Logged in as:</div>
-			Start Bootstrap
+			@userMail
 		</div>
 	</nav>
 </div>
