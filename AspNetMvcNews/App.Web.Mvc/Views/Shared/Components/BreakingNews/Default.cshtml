@@ -1,0 +1,28 @@
+﻿@model List<BreakingNewsModel>
+<div class="breaking-news-widget">
+    <div class="widget-title">
+        <h5>breaking news</h5>
+    </div>
+    @foreach (var item in Model)
+    {
+        <a asp-controller="News" asp-action="Detail" asp-route-id="@item.News.Id">
+            <div class="single-breaking-news-widget">
+                @if (item.NewsImage is not null)
+                {
+                    <img src="@item.NewsImage.ImagePath" alt="">
+                }
+                else
+                {
+                    <img src="/NewsTemplate/img/blog-img/bn-1.jpg" alt="">
+                }
+                <div class="breakingnews-title">
+                    <p>breaking news</p>
+                </div>
+                <div class="breaking-news-heading gradient-background-overlay">
+                    <h5 class="font-pt">@item.News.Title</h5>
+                </div>
+            </div>
+        </a>
+        
+    }
+</div>

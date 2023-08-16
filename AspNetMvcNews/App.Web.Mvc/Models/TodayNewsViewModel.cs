@@ -7,5 +7,6 @@ namespace App.Web.Mvc.Models
         public List<News> News { get; set; }
         public List<int> CommentCount { get; set; }
         public List<Category> Categories { get; set; }
+        public List<NewsImage>? Images { get; set; }
     }
 }

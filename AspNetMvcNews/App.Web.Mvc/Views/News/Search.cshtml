@@ -34,9 +34,19 @@
                         <h2 class="font-pt">@item.News.Title</h2>
                         <p class="gazette-post-date">@item.News.CreatedAt.ToString("MMMM dd, yyyy")</p>
                         <!-- Post Thumbnail -->
-                        <div class="blog-post-thumbnail my-5">
-                            <img src="img/blog-img/18.jpg" alt="post-thumb">
-                        </div>
+                        @if (item.NewsImage is not null)
+                        {
+                            <div class="blog-post-thumbnail my-5">
+                                <img src="@item.NewsImage.ImagePath" alt="post-thumb">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="blog-post-thumbnail my-5">
+                                <img src="/NewsTemplate/img/blog-img/18.jpg" alt="post-thumb">
+                            </div>
+                        }
+                        
                         <!-- Post Excerpt -->
                         <p>@item.News.Content.Substring(0,100)</p>
                         <!-- Reading More -->

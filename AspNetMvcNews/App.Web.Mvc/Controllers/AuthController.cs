@@ -16,10 +16,12 @@ namespace App.Web.Mvc.Controllers
     public class AuthController : Controller
     {
         private readonly AppDbContext _context;
+        private readonly IConfiguration _configuration;
 
-        public AuthController(AppDbContext context)
+        public AuthController(AppDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
         }
 
         public IActionResult Register()
@@ -112,7 +114,10 @@ namespace App.Web.Mvc.Controllers
                         ClaimsPrincipal claimsPrincipal = new(kullanicikimligi);
                         await HttpContext.SignInAsync(claimsPrincipal);
                         HttpContext.Session.SetInt32("UserId", kullanici.Id);
-                        
+                        if (kullanici.RoleId==1)
+                        {
+                            return Redirect(_configuration.GetConnectionString("Admin"));
+                        }
 
                         return Redirect(string.IsNullOrEmpty(user.redirectUrl) ? "/Home/Index" : user.redirectUrl);
                     }
@@ -146,17 +151,17 @@ namespace App.Web.Mvc.Controllers
             }
             else
             {
-                //await EmailSend.SendMailAsync(kullanici);
+                await EmailSend.SendMailAsync(kullanici);
 
+                ViewBag.Message = "Emailinize sifre degistirme talebinize iliskin mesaj gonderilmistir.";
 
-
-                return RedirectToAction(nameof(UpdatePassword), kullanici);
+                return View();
 
             }
         }
-        public IActionResult UpdatePassword(App.Data.Entity.User user)
+        public IActionResult UpdatePassword([FromQuery]int newPassword)
         {
-            var kullanici = _context.Users.Where(x => x.Email == user.Email).FirstOrDefault();
+            var kullanici = _context.Users.Where(x => x.Id == newPassword).FirstOrDefault();
             var model = new UpdatePasswordViewModel()
             {
                 User = kullanici,

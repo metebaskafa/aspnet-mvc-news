@@ -1,0 +1,18 @@
+﻿@model IEnumerable<VideoNews>
+<section class="gazatte-video-post-area section_padding_100_70 bg-gray">
+    <div class="container">
+        <div class="row">
+            <!-- Single Video Post Start -->
+            @foreach (var item in Model)
+            {
+                <div class="col-12 col-md-6">
+                    <div class="single-video-post">
+                        <iframe width="560" height="315" src="@item.VideoLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <h5>@item.Title</h5>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</section>

@@ -14,6 +14,7 @@ namespace App.Data
         public DbSet<NewsImage> Images { get; set; }
         public DbSet<Page> Pages { get; set; }
         public DbSet<Setting> Settings { get; set; }
+        public DbSet<VideoNews> VideoNews { get; set; }
         public AppDbContext()
         {
 

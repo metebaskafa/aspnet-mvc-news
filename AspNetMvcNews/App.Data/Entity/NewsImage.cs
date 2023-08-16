@@ -12,8 +12,8 @@ namespace App.Data.Entity
         [ForeignKey(nameof(NewsId))]
         public virtual News? News { get; set; }
 
-        [MaxLength(200)]
-        [Column(name: "Resim Yolu", TypeName = "nvarchar")]
+        [MaxLength(600)]
+        [Column(name: "Resim", TypeName = "nvarchar")]
         public string? ImagePath { get; set; }
     }
 }

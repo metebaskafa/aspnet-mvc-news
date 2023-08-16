@@ -11,9 +11,9 @@ namespace App.Web.Mvc.Utils
         {
             SmtpClient smtpClient = new();
             smtpClient.Connect("smtp.gmail.com", 587, false);
-            smtpClient.Authenticate("alanyaliburak0@gmail.com", "Asd1234.");
+            smtpClient.Authenticate("alanyaliburak0@gmail.com", "mfatuetekshkqlkq");
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Siteden","alanyaliburak0@gmail.com"));
+            message.From.Add(new MailboxAddress("Haber Sitesi","alanyaliburak0@gmail.com"));
             message.To.Add(new MailboxAddress(user.Name,user.Email));
             message.Subject = "Şifre Sıfırlama Talebi";
             message.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text= $"Kullanıcı Bilgileri : <hr /> " +

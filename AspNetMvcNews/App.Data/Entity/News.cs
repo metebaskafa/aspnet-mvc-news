@@ -16,6 +16,8 @@ namespace App.Data.Entity
         [Column(name: "Başlık", TypeName = "nvarchar")]
         public string Title { get; set; }
 
+        [MinLength(200)]
+        [MaxLength(2000)]
         [Column(name: "İçerik", TypeName = "nvarchar")]
         public string Content { get; set; }
 

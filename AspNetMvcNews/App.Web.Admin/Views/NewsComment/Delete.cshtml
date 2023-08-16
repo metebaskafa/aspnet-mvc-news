@@ -1,0 +1,34 @@
+﻿@model NewsComment
+@{
+    ViewData["Title"] = "Yorum Sil";
+}
+<h3>Bunu silmek istediğinize emin misiniz?</h3>
+<div>
+    <h4>Ayar</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PostId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.News.Title)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" method="post">
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index">Listeye Dön</a>
+    </form>
+</div>

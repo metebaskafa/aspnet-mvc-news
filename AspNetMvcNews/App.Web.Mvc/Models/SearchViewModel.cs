@@ -6,5 +6,6 @@ namespace App.Web.Mvc.Models
     {
         public Category Category { get; set; }
         public News News { get; set; }
+        public NewsImage? NewsImage { get; set; }
     }
 }
