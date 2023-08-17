@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<News>
 @{
-    var helper = new TRYExchRate(DateTime.Now.Date);
-    var Dolaralis = helper.GetExchRate("USD", ExchRateType.ForexBuying).ToString();
-    var Dolarsatis = helper.GetExchRate("USD", ExchRateType.ForexSelling).ToString();
-    var Euroalis = helper.GetExchRate("EUR", ExchRateType.ForexBuying).ToString();
-    var Eurosatis = helper.GetExchRate("EUR", ExchRateType.ForexSelling).ToString();
-    var Sterlinalis = helper.GetExchRate("GBP", ExchRateType.ForexBuying).ToString();
-    var Sterlinsatis = helper.GetExchRate("GBP", ExchRateType.ForexSelling).ToString();
+    // var helper = new TRYExchRate(DateTime.Now.Date);
+    // var Dolaralis = helper.GetExchRate("USD", ExchRateType.ForexBuying).ToString();
+    // var Dolarsatis = helper.GetExchRate("USD", ExchRateType.ForexSelling).ToString();
+    // var Euroalis = helper.GetExchRate("EUR", ExchRateType.ForexBuying).ToString();
+    // var Eurosatis = helper.GetExchRate("EUR", ExchRateType.ForexSelling).ToString();
+    // var Sterlinalis = helper.GetExchRate("GBP", ExchRateType.ForexBuying).ToString();
+    // var Sterlinsatis = helper.GetExchRate("GBP", ExchRateType.ForexSelling).ToString();
 
 
 }
@@ -36,7 +36,7 @@
                                 <div class="single-stock-report">
                                     <div class="stock-values">
                                         <span>USD/TRY</span>
-                                        <span>@Dolaralis</span>
+                                        @* <span>@Dolaralis</span> *@
                                     </div>
                                     <div class="stock-index plus-index">
 										<h4>1.11</h4>
@@ -45,8 +45,8 @@
                                 <div class="single-stock-report">
                                     <div class="stock-values">
                                         <span>EUR/TRY</span>
-                                        <span>@Euroalis</span>
-                                    </div>
+@*                                         <span>@/* Euroalis */</span>
+ *@                                    </div>
                                     <div class="stock-index plus-index">
 										<h4>0.92</h4>
                                     </div>
@@ -54,8 +54,8 @@
                                 <div class="single-stock-report">
                                     <div class="stock-values">
                                         <span>GBP/TRY</span>
-                                        <span>@Sterlinalis</span>
-                                    </div>
+@*                                         <span>@Sterlinalis</span>
+ *@                                    </div>
                                     <div class="stock-index plus-index">
 										<h4>1.72</h4>
                                     </div>
@@ -65,8 +65,8 @@
                                 <div class="single-stock-report">
                                     <div class="stock-values">
                                         <span>USD/TRY</span>
-                                        <span>@Dolarsatis</span>
-                                    </div>
+@*                                         <span>@Dolarsatis</span>
+ *@                                    </div>
                                     <div class="stock-index plus-index">
 										<h4>1.02</h4>
                                     </div>
@@ -74,8 +74,8 @@
                                 <div class="single-stock-report">
                                     <div class="stock-values">
                                         <span>EUR/TRY</span>
-                                        <span>@Eurosatis</span>
-                                    </div>
+@*                                         <span>@Eurosatis</span>
+ *@                                    </div>
                                     <div class="stock-index plus-index">
 										<h4>0.87</h4>
                                     </div>
@@ -83,8 +83,8 @@
                                 <div class="single-stock-report">
                                     <div class="stock-values">
                                         <span>GBP/TRY</span>
-                                        <span>@Sterlinsatis</span>
-                                    </div>
+@*                                         <span>@Sterlinsatis</span>
+ *@                                    </div>
                                     <div class="stock-index plus-index">
 										<h4>1.92</h4>
                                     </div>
