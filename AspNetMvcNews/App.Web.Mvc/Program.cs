@@ -69,9 +69,9 @@ using (var scope = app.Services.CreateScope())
 {
 	var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
-	if (!await dbContext.Database.CanConnectAsync())
+	if (await dbContext.Database.EnsureCreatedAsync())
 	{
-		await dbContext.Database.EnsureCreatedAsync();
+		
 
 		await DbSeeder.Seed(dbContext);
 	}
